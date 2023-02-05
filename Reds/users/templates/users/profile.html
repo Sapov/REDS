@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+{% block title %}Home{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a> |
+<a href="{% url 'signup' %}">signup</a>
+{% endif %}
+
+
+    <h2>Профиль пользователя: </h2>
+    <table>
+        <thead>
+           <th>Id</th><th>Логин</th><th>Имя</th><th>Фамилия</th>
+           <th>Телефон</th><th>Город</th>
+       </thead>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.city }}</td>
+
+
+
+        </tr>
+
+    </table>
+{% endblock %}
+
+
+</body>
+</html>
