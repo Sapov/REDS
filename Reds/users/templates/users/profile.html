@@ -11,6 +11,7 @@
 {% if user.is_authenticated %}
 Hi {{ user.username }}!
 <p><a href="{% url 'logout' %}">logout</a></p>
+<p><a href="{% url 'password_change' %}">password change </a></p>
 {% else %}
 <p>You are not logged in</p>
 <a href="{% url 'login' %}">login</a> |
@@ -22,7 +23,7 @@ Hi {{ user.username }}!
     <table>
         <thead>
            <th>Id</th><th>Логин</th><th>Имя</th><th>Фамилия</th>
-           <th>Телефон</th><th>Город</th>
+           <th>Телефон</th><th>Email</th>
        </thead>
         <tr>
             <td>{{ user.id }}</td>
@@ -30,7 +31,7 @@ Hi {{ user.username }}!
             <td>{{ user.first_name }}</td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.phone }}</td>
-            <td>{{ user.city }}</td>
+            <td>{{ user.email }}</td>
 
 
 
