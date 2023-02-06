@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
+
 
 
 class CustomUser(AbstractUser):
@@ -14,3 +16,6 @@ class CustomUser(AbstractUser):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Добавлено")  # date created
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Изменено")  # date update
+
+    def get_absolute_url(self):
+        return reverse('users:update_user', args =[self.id])
